@@ -1,16 +1,17 @@
-#!/bin/sh
+# 1️⃣ Create virtual environment
+python -m venv .venv
 
-# Upgrade to pip3
-python3 -m pip install --upgrade pip  
+# 2️⃣ Allow activation scripts (only once if blocked)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# Install pipenv
-sudo -H pip3 install -U pipenv 
+# 3️⃣ Activate virtual environment
+.venv\Scripts\Activate.ps1
 
-# Create virtual environment
-pipenv --python 3
+# 4️⃣ Upgrade pip (good practice)
+python -m pip install --upgrade pip
 
-# Activate virtual environment
-pipenv shell 
+# 5️⃣ Install required dependencies
+pip install streamlit pillow pandas matplotlib requests
 
-# Install libraries
-# pipenv install streamlit pandas matplotlib seaborn bs4 cryptocmd 
+# 6️⃣ Run your Streamlit app
+streamlit run crypto_app.py
